@@ -6,8 +6,20 @@ yarn add jsonwebtoken && yarn add --dev @types/jsonwebtoken
 
 or
 
-npm install jsonwebtoken && npm isntall --save-dev @types/jsonwebtoken
+npm install jsonwebtoken && npm install --save-dev @types/jsonwebtoken
 ~~~
+#### JWT estrutura
+##### Validação
+
+jwt.verify(token, process.env.TOKEN_SECRET);
+
+token = que está enviado na requisição.
+TOKEN_SECRET = variável de ambiente que possui a chave pra decodificar o token.
+#### Criação
+
+jwt.sign(dados, chave, options -> {expiresIn: tempo de validade '1d' -> um dia})
+jwt.sign({ id, email }, process.env.TOKEN_SECRET, {expiresIn: '1d',});
+
 
 #### Criar variável de ambiente
 ~~~env
@@ -64,7 +76,7 @@ export default async function (request, response, next,) {
 ~~~
 
 #### Criando um token
-o token deve ser criado na hora que o usuario precisar acessar a aplicação ou utilizar algum recurso.
+o token deve ser criado na hora que o usuário precisar acessar a aplicação ou utilizar algum recurso.
 ~~~ts
 //exemplo
 async store(request: Req, response: Response) {
@@ -101,5 +113,5 @@ async store(request: Req, response: Response) {
       });
     }
 ~~~
-Esse token deve ser retorna após a autenticação do usuario para que possa ser usado pelo
+Esse token deve ser retorna após a autenticação do usuário para que possa ser usado pelo
 frontend na próxima requisição.
