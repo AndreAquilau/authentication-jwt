@@ -1,0 +1,10 @@
+{
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "npx ts-node --files",
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true,
+  }
+}
